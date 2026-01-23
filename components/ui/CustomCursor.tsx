@@ -17,8 +17,16 @@ export default function CustomCursor() {
 
     useEffect(() => {
         const moveCursor = (e: MouseEvent) => {
-            mouseX.set(e.clientX - 6); // Center the 12px cursor
+            mouseX.set(e.clientX - 6);
             mouseY.set(e.clientY - 6);
+        };
+
+        const touchMoveCursor = (e: TouchEvent) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                mouseX.set(touch.clientX - 6);
+                mouseY.set(touch.clientY - 6);
+            }
         };
 
         const handleMouseOver = (e: MouseEvent) => {
@@ -32,10 +40,14 @@ export default function CustomCursor() {
         };
 
         window.addEventListener("mousemove", moveCursor);
+        window.addEventListener("touchmove", touchMoveCursor, { passive: true });
+        window.addEventListener("touchstart", touchMoveCursor, { passive: true });
         window.addEventListener("mouseover", handleMouseOver);
 
         return () => {
             window.removeEventListener("mousemove", moveCursor);
+            window.removeEventListener("touchmove", touchMoveCursor);
+            window.removeEventListener("touchstart", touchMoveCursor);
             window.removeEventListener("mouseover", handleMouseOver);
         };
     }, [mouseX, mouseY]);

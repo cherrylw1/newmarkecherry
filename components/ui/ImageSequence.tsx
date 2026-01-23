@@ -67,7 +67,9 @@ export default function ImageSequence({
         };
 
         const handleResize = () => {
-            const dpr = window.devicePixelRatio || 1;
+            // OPTIMIZATION: Cap DPR at 1.5 to save performance on high-res mobile screens
+            // This huge speed boost makes scrolling smooth on phones
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             const rect = canvas.getBoundingClientRect();
 
             const newWidth = rect.width * dpr;
