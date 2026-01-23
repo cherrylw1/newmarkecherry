@@ -165,19 +165,14 @@ export default function WhatWeDo() {
                 <div
                     data-touch-card="green"
                     data-active="false"
-                    className="group max-w-4xl mx-auto relative p-[1px] rounded-2xl overflow-hidden"
+                    className="group max-w-4xl mx-auto text-center bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/5 hover:border-green-500/30 data-[active=true]:border-green-500/30 transition-colors duration-500"
                 >
-                    {/* Holographic Border Beam (Green) */}
-                    <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#4ade80_360deg)] opacity-0 group-hover:opacity-100 group-data-[active=true]:opacity-100 transition-opacity duration-500 animate-[spin_4s_linear_infinite]" />
-
-                    <div className="relative bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/5 hover:border-transparent group-data-[active=true]:border-transparent transition-colors duration-500 text-center h-full w-full">
-                        <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4 group-hover:text-green-400 group-data-[active=true]:text-green-400 transition-colors duration-300">
-                            Why This Works
-                        </h3>
-                        <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300">
-                            This framework is built on real-world experience, not theory. Sharath developed and refined these optimization principles while working on 100+ enterprise ad accounts at LinkedIn, where performance was measured in efficiency, scale, and revenue impact — not vanity metrics.
-                        </p>
-                    </div>
+                    <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4 group-hover:text-green-400 group-data-[active=true]:text-green-400 transition-colors duration-300">
+                        Why This Works
+                    </h3>
+                    <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300">
+                        This framework is built on real-world experience, not theory. Sharath developed and refined these optimization principles while working on 100+ enterprise ad accounts at LinkedIn, where performance was measured in efficiency, scale, and revenue impact — not vanity metrics.
+                    </p>
                 </div>
             </div>
         </section>
