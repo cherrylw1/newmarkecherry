@@ -33,16 +33,41 @@ export default function CustomCursor() {
                 // Mobile "Scrub" Effect: Detect element under finger
                 const element = document.elementFromPoint(touch.clientX, touch.clientY) as HTMLElement;
 
-                // If we moved to a new element
-                if (lastTouchedRef.current !== element) {
-                    // 1. Reset previous element if it was a text hover
-                    if (lastTouchedRef.current && lastTouchedRef.current.getAttribute('data-text-hover') === 'true') {
-                        lastTouchedRef.current.classList.remove('text-accent');
-                    }
+                // Track Cards
+                const card = element?.closest('[data-touch-card]') as HTMLElement;
 
-                    // 2. Highlight new element if it is a text hover
+                // If we moved to a new element or card
+                // Check if element has changed OR if it's the same element but we might have moved into/out of a card zone
+                if (lastTouchedRef.current !== element || element) {
+                    /* 
+                       Note: logic simplified to just run on move. 
+                       Optimization: ideally only run if target changed, but for scrubbing cards, 
+                       we need to be sure we catch the transition.
+                    */
+
+                    // --- Text Effect ---
+                    if (lastTouchedRef.current && lastTouchedRef.current !== element) {
+                        if (lastTouchedRef.current.getAttribute('data-text-hover') === 'true') {
+                            lastTouchedRef.current.classList.remove('text-accent');
+                        }
+                    }
                     if (element && element.getAttribute('data-text-hover') === 'true') {
                         element.classList.add('text-accent');
+                    }
+
+                    // --- Card Effect ---
+                    // Deactivate all other cards if we are not on them
+                    // (Using querySelectorAll to be safe ensures clean state)
+                    const allCards = document.querySelectorAll('[data-touch-card]');
+                    allCards.forEach(c => {
+                        if (c !== card) {
+                            c.setAttribute('data-active', 'false');
+                        }
+                    });
+
+                    // Activate current card
+                    if (card) {
+                        card.setAttribute('data-active', 'true');
                     }
 
                     lastTouchedRef.current = element;
