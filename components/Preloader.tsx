@@ -14,17 +14,17 @@ export default function Preloader() {
     const [showPreloader, setShowPreloader] = useState(true);
 
     useEffect(() => {
-        // Line 1: Faster start (0.5s)
-        const timer1 = setTimeout(() => setCurrentLineIndex(1), 500);
+        // Line 1: Instant start (0.1s)
+        const timer1 = setTimeout(() => setCurrentLineIndex(1), 100);
 
-        // Line 2: Faster sequence (1.5s)
-        const timer2 = setTimeout(() => setCurrentLineIndex(2), 1500);
+        // Line 2: Fast sequence (0.8s)
+        const timer2 = setTimeout(() => setCurrentLineIndex(2), 800);
 
-        // Line 3: Faster finish (2.5s)
-        const timer3 = setTimeout(() => setCurrentLineIndex(3), 2500);
+        // Line 3: Fast finish (1.5s)
+        const timer3 = setTimeout(() => setCurrentLineIndex(3), 1500);
 
-        // Exit: Quick exit after text is done (3.2s)
-        const timerExit = setTimeout(() => setShowPreloader(false), 3200);
+        // Exit: Quick exit (2.2s)
+        const timerExit = setTimeout(() => setShowPreloader(false), 2200);
 
         return () => {
             clearTimeout(timer1);
@@ -39,7 +39,7 @@ export default function Preloader() {
             {showPreloader && (
                 <motion.div
                     initial={{ opacity: 1 }}
-                    exit={{ y: "-100%", opacity: 1, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+                    exit={{ y: "-100%", opacity: 1, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } }}
                     className="fixed inset-0 z-[100] bg-black flex flex-col items-start justify-center px-8 md:px-20 font-dot font-bold tracking-widest text-lg md:text-3xl leading-loose"
                 >
                     {lines.map((line, index) => (
@@ -51,7 +51,7 @@ export default function Preloader() {
                         >
                             {/* Simple "Typing" reveal based on index visibility */}
                             {index <= currentLineIndex && (
-                                <Typewriter text={line.text} delay={index * 0.3} />
+                                <Typewriter text={line.text} delay={index * 0.1} />
                             )}
                         </motion.div>
                     ))}
@@ -73,7 +73,7 @@ const Typewriter = ({ text, delay }: { text: string; delay: number }) => {
         hidden: { opacity: 0 },
         visible: (i = 1) => ({
             opacity: 1,
-            transition: { staggerChildren: 0.02, delayChildren: delay } // Faster typing (0.02s)
+            transition: { staggerChildren: 0.01, delayChildren: delay } // Ultra-Fast typing (0.01s)
         })
     };
 
