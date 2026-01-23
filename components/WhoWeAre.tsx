@@ -35,9 +35,9 @@ export default function WhoWeAre() {
                             We don't guess algorithms. We know them. Founded by a former LinkedIn Insider who personally optimized over 100 enterprise accounts. We apply officially trained optimization secrets to squeeze every drop of ROI from your budget. From high-converting creative to forensic tracking, we handle the entire ecosystem.
                         </p>
 
-                        <div className="border border-white/20 px-6 py-4 rounded-lg bg-white/5 backdrop-blur-sm self-start whitespace-nowrap">
-                            <span className="block text-sm text-foreground/60 uppercase tracking-wider mb-1">Verified</span>
-                            <span className="text-lg font-bold text-foreground">100+ Accounts Optimized Strategy</span>
+                        <div className="border border-white/20 px-6 py-4 rounded-lg bg-white/5 backdrop-blur-sm self-start w-full md:w-auto">
+                            <span className="block text-xs md:text-sm text-foreground/60 uppercase tracking-wider mb-1">Verified</span>
+                            <span className="text-base md:text-lg font-bold text-foreground block md:inline whitespace-normal md:whitespace-nowrap leading-tight">100+ Accounts Optimized Strategy</span>
                         </div>
                     </div>
                 </div>
