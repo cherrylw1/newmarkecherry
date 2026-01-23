@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import TextHover from "@/components/ui/TextHover";
+import RedactedReveal from "@/components/ui/RedactedReveal";
 
 export default function WhoWeAre() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -22,9 +23,13 @@ export default function WhoWeAre() {
 
                 {/* Content Layer */}
                 <div className="relative z-10">
-                    <h2 className="text-[6vw] font-bold font-dot uppercase leading-none mb-4 text-foreground mix-blend-difference flex flex-col">
-                        <TextHover text="THE INSIDER EDGE" />
-                        <TextHover text="FOR YOUR ADS." />
+                    <h2 className="text-[6vw] font-bold font-dot uppercase leading-none mb-4 text-foreground mix-blend-difference flex flex-col items-start">
+                        <RedactedReveal delay={0.1}>
+                            <TextHover text="THE INSIDER EDGE" />
+                        </RedactedReveal>
+                        <RedactedReveal delay={0.2} blockClassName="bg-white">
+                            <TextHover text="FOR YOUR ADS." />
+                        </RedactedReveal>
                     </h2>
                     <h3 className="text-xl md:text-2xl font-light text-accent uppercase tracking-widest mb-10 mix-blend-difference">
                         Founded by Sharath MB (Ex-LinkedIn Marketing).
