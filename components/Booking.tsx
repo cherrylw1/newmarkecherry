@@ -17,8 +17,7 @@ export default function Booking() {
 
         // Redirect
         setTimeout(() => {
-            // Placeholder for actual booking link
-            window.location.href = "https://calendly.com";
+            window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
         }, 2000);
     };
 
@@ -49,7 +48,7 @@ export default function Booking() {
                     ) : (
                         <motion.div
                             layoutId="booking-button"
-                            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-accent text-white"
+                            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-green-600 text-white"
                             initial={{ borderRadius: "50px" }}
                             animate={{ borderRadius: "0px" }}
                             transition={{
@@ -68,7 +67,7 @@ export default function Booking() {
                                         <h2 className="text-[5vw] font-bold font-dot uppercase leading-none mb-4">
                                             Good choice.
                                         </h2>
-                                        <p className="text-xl md:text-2xl font-light uppercase tracking-widest opacity-80">
+                                        <p className="text-xl md:text-2xl font-dot font-light uppercase tracking-widest opacity-80">
                                             This is where optimization begins.
                                         </p>
                                     </motion.div>
