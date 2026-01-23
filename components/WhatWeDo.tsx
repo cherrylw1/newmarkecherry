@@ -70,23 +70,25 @@ const ServiceCard = ({
     delay: number;
 }) => (
     <div
-        className="group relative p-8 border border-white/10 bg-black/80 backdrop-blur-xl rounded-xl hover:bg-black/90 transition-all duration-500 overflow-hidden flex flex-col"
+        data-touch-card="red"
+        data-active="false"
+        className="group relative p-8 border border-white/10 bg-black/80 backdrop-blur-xl rounded-xl hover:bg-black/90 data-[active=true]:bg-black/90 transition-all duration-500 overflow-hidden flex flex-col"
     >
-        <div className="absolute top-0 left-0 w-1 h-full bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom" />
+        <div className="absolute top-0 left-0 w-1 h-full bg-accent scale-y-0 group-hover:scale-y-100 group-data-[active=true]:scale-y-100 transition-transform duration-500 origin-bottom" />
 
         <motion.h3
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: delay }}
-            className="text-xl md:text-2xl font-bold font-dot mb-4 text-foreground group-hover:text-accent transition-colors block leading-tight"
+            className="text-xl md:text-2xl font-bold font-dot mb-4 text-foreground group-hover:text-accent group-data-[active=true]:text-accent transition-colors block leading-tight"
         >
             <TextHover text={title} className="pointer-events-auto" />
         </motion.h3>
 
         <WordReveal
             text={description}
-            className="text-gray-300 font-light leading-relaxed group-hover:text-white transition-colors mb-6"
+            className="text-gray-300 font-light leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6"
             delay={delay + 0.2} // Start after title
         />
 
@@ -154,11 +156,15 @@ export default function WhatWeDo() {
                 </div>
 
                 {/* Why This Works Section - GREEN HOVER */}
-                <div className="group max-w-4xl mx-auto text-center bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/5 hover:border-green-500/30 transition-colors duration-500">
-                    <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4 group-hover:text-green-400 transition-colors duration-300">
+                <div
+                    data-touch-card="green"
+                    data-active="false"
+                    className="group max-w-4xl mx-auto text-center bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/5 hover:border-green-500/30 data-[active=true]:border-green-500/30 transition-colors duration-500"
+                >
+                    <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4 group-hover:text-green-400 group-data-[active=true]:text-green-400 transition-colors duration-300">
                         Why This Works
                     </h3>
-                    <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed group-hover:text-green-100 transition-colors duration-300">
+                    <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300">
                         This framework is built on real-world experience, not theory. Sharath developed and refined these optimization principles while working on 100+ enterprise ad accounts at LinkedIn, where performance was measured in efficiency, scale, and revenue impact — not vanity metrics.
                     </p>
                 </div>
