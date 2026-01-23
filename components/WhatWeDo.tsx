@@ -72,38 +72,32 @@ const ServiceCard = ({
     <div
         data-touch-card="red"
         data-active="false"
-        className="group relative p-[1px] rounded-xl overflow-hidden"
+        className="group relative p-8 border border-white/10 bg-black/80 backdrop-blur-xl rounded-xl hover:bg-black/90 data-[active=true]:bg-black/90 transition-all duration-500 overflow-hidden flex flex-col"
     >
-        {/* Holographic Border Beam (Red) */}
-        <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff2e2e_360deg)] opacity-0 group-hover:opacity-100 group-data-[active=true]:opacity-100 transition-opacity duration-500 animate-[spin_4s_linear_infinite]" />
+        <div className="absolute top-0 left-0 w-1 h-full bg-accent scale-y-0 group-hover:scale-y-100 group-data-[active=true]:scale-y-100 transition-transform duration-500 origin-bottom" />
 
-        {/* Inner Content Card */}
-        <div className="relative h-full w-full bg-black/80 backdrop-blur-xl rounded-xl p-8 hover:bg-black/90 data-[active=true]:bg-black/90 transition-all duration-500 flex flex-col">
-            <div className="absolute top-0 left-0 w-1 h-full bg-accent scale-y-0 group-hover:scale-y-100 group-data-[active=true]:scale-y-100 transition-transform duration-500 origin-bottom" />
+        <motion.h3
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: delay }}
+            className="text-xl md:text-2xl font-bold font-dot mb-4 text-foreground group-hover:text-accent group-data-[active=true]:text-accent transition-colors block leading-tight"
+        >
+            <TextHover text={title} className="pointer-events-auto" />
+        </motion.h3>
 
-            <motion.h3
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: delay }}
-                className="text-xl md:text-2xl font-bold font-dot mb-4 text-foreground group-hover:text-accent group-data-[active=true]:text-accent transition-colors block leading-tight"
-            >
-                <TextHover text={title} className="pointer-events-auto" />
-            </motion.h3>
+        <WordReveal
+            text={description}
+            className="text-gray-300 font-light leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6"
+            delay={delay + 0.2} // Start after title
+        />
 
+        <div className="mt-auto border-t border-white/10 pt-4">
             <WordReveal
-                text={description}
-                className="text-gray-300 font-light leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6"
-                delay={delay + 0.2} // Start after title
+                text={outcome}
+                className="text-sm font-bold text-accent/90 uppercase tracking-widest"
+                delay={delay + 0.4}
             />
-
-            <div className="mt-auto border-t border-white/10 pt-4">
-                <WordReveal
-                    text={outcome}
-                    className="text-sm font-bold text-accent/90 uppercase tracking-widest"
-                    delay={delay + 0.4}
-                />
-            </div>
         </div>
     </div>
 );
