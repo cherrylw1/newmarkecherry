@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Codystar } from "next/font/google";
+import { Geist, Geist_Mono, Codystar, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/ui/CustomCursor";
 import GridBackground from "@/components/ui/GridBackground";
@@ -18,6 +17,12 @@ const geistMono = Geist_Mono({
 const dotMatrix = Codystar({
   weight: ["400"],
   variable: "--font-dot",
+  subsets: ["latin"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  variable: "--font-serif",
   subsets: ["latin"],
 });
 
@@ -57,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dotMatrix.variable} antialiased bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dotMatrix.variable} ${instrumentSerif.variable} antialiased bg-background text-foreground`}
       >
         <SmoothScrolling />
         <CustomCursor />
