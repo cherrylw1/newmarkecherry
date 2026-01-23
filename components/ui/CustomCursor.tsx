@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
@@ -15,6 +15,9 @@ export default function CustomCursor() {
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
+    // Track last touched element to create "hover" effect on mobile dragging
+    const lastTouchedRef = useRef<HTMLElement | null>(null);
+
     useEffect(() => {
         const moveCursor = (e: MouseEvent) => {
             mouseX.set(e.clientX - 6);
@@ -26,6 +29,24 @@ export default function CustomCursor() {
                 const touch = e.touches[0];
                 mouseX.set(touch.clientX - 6);
                 mouseY.set(touch.clientY - 6);
+
+                // Mobile "Scrub" Effect: Detect element under finger
+                const element = document.elementFromPoint(touch.clientX, touch.clientY) as HTMLElement;
+
+                // If we moved to a new element
+                if (lastTouchedRef.current !== element) {
+                    // 1. Reset previous element if it was a text hover
+                    if (lastTouchedRef.current && lastTouchedRef.current.getAttribute('data-text-hover') === 'true') {
+                        lastTouchedRef.current.classList.remove('text-accent');
+                    }
+
+                    // 2. Highlight new element if it is a text hover
+                    if (element && element.getAttribute('data-text-hover') === 'true') {
+                        element.classList.add('text-accent');
+                    }
+
+                    lastTouchedRef.current = element;
+                }
             }
         };
 
