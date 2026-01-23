@@ -79,7 +79,7 @@ export default function Booking() {
             </div>
             {/* Legal Footer - CYBER AMBER */}
             <div className="absolute bottom-4 left-0 w-full text-center z-30 pointer-events-auto">
-                <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-dot tracking-widest text-white/40">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-dot tracking-widest text-white/80">
                     <span>CHERRY ON TOP © 2025 // SYSTEM SECURE</span>
                     <span className="hidden md:inline text-amber-500/20">|</span>
                     <div className="flex gap-4">
