@@ -22,8 +22,31 @@ const dotMatrix = Codystar({
 });
 
 export const metadata: Metadata = {
-  title: "Cherry On Top",
-  description: "Digital Experience Agency",
+  metadataBase: new URL("https://cherryontops.in"),
+  title: "Cherry On Top | Digital Experience Agency",
+  description: "We don't guess algorithms. We know them. The insider edge for your ads, founded by Ex-LinkedIn Marketing expert Sharath MB.",
+  openGraph: {
+    title: "Cherry On Top | Digital Experience Agency",
+    description: "The insider edge for your ads. Specialized optimization strategy for 100+ enterprise accounts.",
+    url: "https://cherryontops.in",
+    siteName: "Cherry On Top",
+    images: [
+      {
+        url: "/assets/og-image.jpg", // We should ensure this exists or use a default
+        width: 1200,
+        height: 630,
+        alt: "Cherry On Top Agency",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cherry On Top | Digital Experience Agency",
+    description: "The insider edge for your ads. Optimization strategies from an Ex-LinkedIn Insider.",
+    images: ["/assets/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
