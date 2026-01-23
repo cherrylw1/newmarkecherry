@@ -36,7 +36,7 @@ export default function WhoWeAre() {
                     </h3>
 
                     <div className="flex flex-col md:flex-row gap-10 items-start">
-                        <p className="text-xl md:text-3xl leading-relaxed max-w-4xl text-foreground/90 mix-blend-difference">
+                        <p className="text-xl md:text-4xl font-serif font-light leading-relaxed max-w-4xl text-foreground/90 mix-blend-difference tracking-wide">
                             We don't guess algorithms. We know them. Founded by a former LinkedIn Insider who personally optimized over 100 enterprise accounts. We apply officially trained optimization secrets to squeeze every drop of ROI from your budget. From high-converting creative to forensic tracking, we handle the entire ecosystem.
                         </p>
 
