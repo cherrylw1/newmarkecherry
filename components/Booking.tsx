@@ -77,6 +77,17 @@ export default function Booking() {
                     )}
                 </AnimatePresence>
             </div>
+            {/* Legal Footer - CYBER AMBER */}
+            <div className="absolute bottom-4 left-0 w-full text-center z-20">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-dot tracking-widest text-white/20">
+                    <span>CHERRY ON TOP © 2025 // SYSTEM SECURE</span>
+                    <span className="hidden md:inline text-amber-500/20">|</span>
+                    <div className="flex gap-4">
+                        <a href="#" className="hover:text-amber-400 transition-colors duration-300">PRIVACY_PROTOCOL</a>
+                        <a href="#" className="hover:text-amber-400 transition-colors duration-300">TERMS_OF_SERVICE</a>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }
