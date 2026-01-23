@@ -79,7 +79,7 @@ const ServiceCard = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: delay }}
-            className="text-2xl font-bold font-dot mb-4 text-foreground group-hover:text-accent transition-colors block"
+            className="text-xl md:text-2xl font-bold font-dot mb-4 text-foreground group-hover:text-accent transition-colors block leading-tight"
         >
             <TextHover text={title} className="pointer-events-auto" />
         </motion.h3>
@@ -124,11 +124,11 @@ export default function WhatWeDo() {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col justify-center min-h-screen">
 
                 {/* Main Heading */}
-                <div className="mb-16 text-center">
-                    <h2 className="text-4xl md:text-6xl font-bold font-dot text-foreground uppercase tracking-tight mb-4">
-                        <TextHover text="THE CHERRY ON TOP" />
+                <div className="mb-10 md:mb-16 text-center">
+                    <h2 className="text-2xl md:text-6xl font-bold font-dot text-foreground uppercase tracking-tight mb-4 break-words">
+                        <span className="block md:inline"><TextHover text="THE CHERRY ON TOP" /></span>
                         <br className="hidden md:block" />
-                        <TextHover text=" PAID GROWTH FRAMEWORK™" />
+                        <span className="block md:inline mt-2 md:mt-0"><TextHover text=" PAID GROWTH FRAMEWORK™" /></span>
                     </h2>
                 </div>
 
