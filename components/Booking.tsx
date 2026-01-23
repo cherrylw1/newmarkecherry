@@ -67,7 +67,7 @@ export default function Booking() {
                                         <h2 className="text-[5vw] font-bold font-dot uppercase leading-none mb-4">
                                             Good choice.
                                         </h2>
-                                        <p className="text-xl md:text-2xl font-dot font-light uppercase tracking-widest opacity-80">
+                                        <p className="text-xl md:text-2xl font-dot font-bold uppercase tracking-widest opacity-90">
                                             This is where optimization begins.
                                         </p>
                                     </motion.div>
