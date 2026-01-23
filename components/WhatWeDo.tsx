@@ -88,7 +88,7 @@ const ServiceCard = ({
 
         <WordReveal
             text={description}
-            className="text-gray-300 font-serif text-lg md:text-xl font-light leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6 tracking-wide"
+            className="text-gray-300 font-editorial text-lg md:text-xl font-light leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6 tracking-wide"
             delay={delay + 0.2} // Start after title
         />
 
@@ -164,7 +164,7 @@ export default function WhatWeDo() {
                     <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4 group-hover:text-green-400 group-data-[active=true]:text-green-400 transition-colors duration-300">
                         Why This Works
                     </h3>
-                    <p className="text-xl md:text-2xl text-gray-300 font-serif font-light leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300 tracking-wide">
+                    <p className="text-xl md:text-2xl text-gray-300 font-editorial font-light leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300 tracking-wide">
                         This framework is built on real-world experience, not theory. Sharath developed and refined these optimization principles while working on 100+ enterprise ad accounts at LinkedIn, where performance was measured in efficiency, scale, and revenue impact — not vanity metrics.
                     </p>
                 </div>

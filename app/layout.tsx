@@ -22,7 +22,7 @@ const dotMatrix = Codystar({
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
-  variable: "--font-serif",
+  variable: "--font-editorial",
   subsets: ["latin"],
 });
 
