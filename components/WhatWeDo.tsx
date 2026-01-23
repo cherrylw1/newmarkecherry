@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import TextHover from "@/components/ui/TextHover";
-import { motion, useInView, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 // Helper component for Word Reveal
 const WordReveal = ({ text, className, delay = 0 }: { text: string, className?: string, delay?: number }) => {
@@ -61,14 +61,16 @@ const WordReveal = ({ text, className, delay = 0 }: { text: string, className?: 
 const ServiceCard = ({
     title,
     description,
+    outcome,
     delay
 }: {
     title: string;
     description: string;
+    outcome: string;
     delay: number;
 }) => (
     <div
-        className="group relative p-8 border border-white/10 bg-black/80 backdrop-blur-xl rounded-xl hover:bg-black/90 transition-all duration-500 overflow-hidden"
+        className="group relative p-8 border border-white/10 bg-black/80 backdrop-blur-xl rounded-xl hover:bg-black/90 transition-all duration-500 overflow-hidden flex flex-col"
     >
         <div className="absolute top-0 left-0 w-1 h-full bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom" />
 
@@ -84,9 +86,17 @@ const ServiceCard = ({
 
         <WordReveal
             text={description}
-            className="text-gray-300 font-light leading-relaxed group-hover:text-white transition-colors"
+            className="text-gray-300 font-light leading-relaxed group-hover:text-white transition-colors mb-6"
             delay={delay + 0.2} // Start after title
         />
+
+        <div className="mt-auto border-t border-white/10 pt-4">
+            <WordReveal
+                text={outcome}
+                className="text-sm font-bold text-accent/90 uppercase tracking-widest"
+                delay={delay + 0.4}
+            />
+        </div>
     </div>
 );
 
@@ -94,38 +104,63 @@ export default function WhatWeDo() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <section ref={containerRef} className="relative h-[150vh] w-full bg-background">
-            <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center px-10">
-                {/* Background Animation Layer - VIDEO */}
+        <section ref={containerRef} className="relative min-h-[150vh] w-full bg-background py-20">
+            {/* Background Animation Layer - VIDEO (Fixed to relative container for simple scroll) 
+                 Changed to absolute sticky-like behavior or just standard absolute if we want it to scroll with content?
+                 The user asked to keep layout same. Previous layout was sticky 150vh.
+             */}
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
                 <video
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-screen"
+                    className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-screen sticky top-0"
                 >
                     <source src="/assets/video-bg-what.mp4" type="video/mp4" />
                 </video>
+            </div>
 
-                {/* Content Layer */}
-                <div className="relative z-10 w-full max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <ServiceCard
-                            title="The Insider Advantage"
-                            description="We don't just buy media; we engineer it. Using proprietary algorithmic signals, we audit your ad account to find wasted spend and hidden scaling opportunities others miss."
-                            delay={0}
-                        />
-                        <ServiceCard
-                            title="Multi-Channel Growth"
-                            description="Meta, Google, LinkedIn, TikTok. We orchestrate campaigns across platforms to create an omnipresent brand halo that drives lower CPA and higher LTV."
-                            delay={0.2}
-                        />
-                        <ServiceCard
-                            title="Creative to Conversion"
-                            description="Clicks don't pay bills. Revenue does. We align high-octane creative production with landing page CRO to ensure traffic actually converts into cash."
-                            delay={0.4}
-                        />
-                    </div>
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col justify-center min-h-screen">
+
+                {/* Main Heading */}
+                <div className="mb-16 text-center">
+                    <h2 className="text-4xl md:text-6xl font-bold font-dot text-foreground uppercase tracking-tight mb-4">
+                        <TextHover text="THE CHERRY ON TOP" />
+                        <br className="hidden md:block" />
+                        <TextHover text=" PAID GROWTH FRAMEWORK™" />
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    <ServiceCard
+                        title="Step 1: Diagnose the Leaks"
+                        description="Before scaling spend, we identify where money is being wasted. We run a forensic audit across your ad account, tracking setup, and funnel structure to uncover inefficiencies, broken signals, and missed scale opportunities that quietly drain ROI."
+                        outcome="Outcome: Wasted spend eliminated. Clear priorities established."
+                        delay={0}
+                    />
+                    <ServiceCard
+                        title="Step 2: Engineer the System"
+                        description="Paid media doesn’t work in silos — and neither do we. We rebuild your campaigns across Meta, Google, LinkedIn, and TikTok as one coordinated acquisition system, designed to reduce CPA and increase lifetime value."
+                        outcome="Outcome: Predictable, scalable performance across channels."
+                        delay={0.2}
+                    />
+                    <ServiceCard
+                        title="Step 3: Convert for Revenue"
+                        description="Traffic alone is meaningless without conversion. We align ad creative, landing pages, and conversion tracking so every click has a single job: turning intent into revenue."
+                        outcome="Outcome: Ad spend directly tied to measurable business growth."
+                        delay={0.4}
+                    />
+                </div>
+
+                {/* Why This Works Section */}
+                <div className="max-w-4xl mx-auto text-center bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/5">
+                    <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4">
+                        Why This Works
+                    </h3>
+                    <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+                        This framework is built on real-world experience, not theory. Sharath developed and refined these optimization principles while working on 100+ enterprise ad accounts at LinkedIn, where performance was measured in efficiency, scale, and revenue impact — not vanity metrics.
+                    </p>
                 </div>
             </div>
         </section>
