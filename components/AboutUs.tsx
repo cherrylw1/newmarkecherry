@@ -115,8 +115,8 @@ export default function AboutUs() {
         <section className="relative w-full bg-black py-20 px-4 md:px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-dot text-white uppercase tracking-widest mb-8">
-                        <TextHover text="[ About Us ]" />
+                    <h2 className="text-3xl md:text-4xl font-bold font-dot uppercase tracking-widest mb-8">
+                        <TextHover text="[ About Us ]" className="text-white" charClassName="hover:text-[#FF2E2E]" />
                     </h2>
                 </div>
 
