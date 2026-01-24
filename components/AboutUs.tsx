@@ -195,15 +195,9 @@ const FounderCard = () => (
             className="p-8 md:p-12 flex flex-col justify-center bg-black/40"
         >
             <h4 className="text-2xl font-bold text-white mb-6">The Founder</h4>
-            <p className="text-neutral-300 font-light leading-relaxed mb-8">
+            <p className="text-neutral-300 font-light leading-relaxed">
                 Sharath blends creative vision with technical precision. With a focus on high-impact visuals and data-driven strategies, he leads teams to build brand experiences that don't just look good—they convert. He believes aesthetics only matter when they serve a clear purpose.
             </p>
-            <div className="mt-auto">
-                <button className="text-sm font-bold uppercase tracking-widest text-white hover:text-accent transition-colors flex items-center gap-2">
-                    Work with Sharath
-                    <span className="text-lg">→</span>
-                </button>
-            </div>
         </motion.div>
     </motion.div>
 );
