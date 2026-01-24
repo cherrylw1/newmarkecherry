@@ -157,7 +157,7 @@ export default function Booking() {
                 </AnimatePresence>
             </div>
             {/* Legal Footer - CYBER AMBER - CENTER STACK FIX */}
-            <div className="absolute bottom-4 left-0 w-full text-center z-30 pointer-events-auto">
+            <div className="absolute bottom-1 md:bottom-4 left-0 w-full text-center z-30 pointer-events-auto">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-dot tracking-widest text-white/80 max-w-[60%] md:max-w-none mx-auto">
                     <span>CHERRY ON TOP © 2025 // SYSTEM SECURE</span>
                     <span className="hidden md:inline text-amber-500/20">|</span>
