@@ -58,7 +58,82 @@ const TOOLBOX_ITEMS = [
     }
 ];
 
-// ... (Other components remain same until Toolbox)
+const StatCard = ({ value, label }: { value: string; label: string }) => (
+    <div className="h-full w-full bg-neutral-900/50 border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:bg-neutral-800/50 transition-colors duration-500 group">
+        <h3 className="text-4xl md:text-5xl font-bold font-dot text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+            {value}
+        </h3>
+        <p className="text-sm font-light text-neutral-400 uppercase tracking-wider group-hover:text-white transition-colors">
+            {label}
+        </p>
+    </div>
+);
+
+const SpotlightCard = ({ title, image, className }: { title: string; image: string; className?: string }) => (
+    <div className={`relative w-full h-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden group ${className}`}>
+        <div className="absolute inset-0 z-0">
+            <Image
+                src={image}
+                alt="Abstract 3D Shape"
+                fill
+                className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+            />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+        <div className="relative z-20 h-full flex flex-col justify-end p-6">
+            <h3 className="text-xl md:text-2xl font-bold text-white max-w-[80%] leading-tight group-hover:text-accent transition-colors">
+                {title}
+            </h3>
+        </div>
+    </div>
+);
+
+const LocationCard = () => (
+    <div className="relative w-full h-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden group flex flex-col items-center justify-between p-6">
+        <div className="text-center z-20 mt-4">
+            <h3 className="text-xl font-bold text-white mb-1">Based in Bangalore, India</h3>
+            <div className="flex items-center justify-center gap-2">
+                <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-xs uppercase tracking-widest text-neutral-400">Available Worldwide</span>
+            </div>
+        </div>
+        <div className="absolute inset-x-0 bottom-[-50%] h-[180%] w-full z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-700 flex justify-center items-start pointer-events-none">
+            <Globe className="translate-y-10" />
+        </div>
+    </div>
+);
+
+const FounderCard = () => (
+    <div className="w-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 group">
+        <div className="relative h-[400px] md:h-auto w-full overflow-hidden">
+            <Image
+                src="/images/about/founder_filtered_v2.png"
+                alt="Sharath MB - Founder"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent">
+                <h3 className="text-3xl font-bold text-white">Sharath MB</h3>
+                <p className="text-sm uppercase tracking-widest text-neutral-400">Founder & Creative Director</p>
+            </div>
+        </div>
+        <div className="p-8 md:p-12 flex flex-col justify-center bg-black/40">
+            <h4 className="text-2xl font-bold text-white mb-6">The Founder</h4>
+            <p className="text-neutral-300 font-light leading-relaxed mb-8">
+                Sharath blends creative vision with technical precision. With a focus on high-impact visuals and data-driven strategies, he leads teams to build brand experiences that don't just look good—they convert. He believes aesthetics only matter when they serve a clear purpose.
+            </p>
+            <div className="mt-auto">
+                <button className="text-sm font-bold uppercase tracking-widest text-white hover:text-accent transition-colors flex items-center gap-2">
+                    Work with Sharath
+                    <span className="text-lg">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+);
 
 const Toolbox = () => (
     <div className="w-full border border-white/10 rounded-2xl p-6 bg-neutral-900/30 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
