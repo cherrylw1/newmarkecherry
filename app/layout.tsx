@@ -5,6 +5,7 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import GridBackground from "@/components/ui/GridBackground";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import SocialDock from "@/components/ui/SocialDock";
+import GlitchProgressBar from "@/components/ui/GlitchProgressBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,6 +64,7 @@ export default function RootLayout({
         <SmoothScrolling />
         <CustomCursor />
         <GridBackground />
+        <GlitchProgressBar />
         <SocialDock />
         {children}
       </body>

@@ -88,7 +88,7 @@ const ServiceCard = ({
 
         <WordReveal
             text={description}
-            className="text-gray-300 font-editorial text-lg md:text-xl leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6 tracking-wide"
+            className="text-gray-300 font-light leading-relaxed group-hover:text-white group-data-[active=true]:text-white transition-colors mb-6"
             delay={delay + 0.2} // Start after title
         />
 
@@ -123,10 +123,18 @@ export default function WhatWeDo() {
                 </video>
             </div>
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col justify-center min-h-screen">
+            <div className="relative z-10 w-full max-w-7xl mx-auto pl-16 pr-6 md:px-6 flex flex-col justify-center min-h-screen">
 
-                {/* Main Heading */}
-                <div className="mb-10 md:mb-16 text-center">
+                {/* MOBILE SPINE HEADER (Vertical) */}
+                <div className="absolute left-4 top-0 h-full w-10 flex flex-col justify-center items-center md:hidden pointer-events-none mix-blend-difference z-20">
+                    <h2 className="text-[10vh] font-bold font-dot uppercase leading-none text-foreground/20 whitespace-nowrap [writing-mode:vertical-rl] rotate-180 flex items-center gap-4">
+                        <span>THE CHERRY ON TOP</span>
+                        <span className="text-accent/80">PAID GROWTH FRAMEWORK</span>
+                    </h2>
+                </div>
+
+                {/* Main Heading (Desktop Only) */}
+                <div className="hidden md:block mb-10 md:mb-16 text-center">
                     <h2 className="text-2xl md:text-6xl font-bold font-dot text-foreground uppercase tracking-tight mb-4 break-words">
                         <span className="block md:inline"><TextHover text="THE CHERRY ON TOP" /></span>
                         <br className="hidden md:block" />
@@ -164,7 +172,7 @@ export default function WhatWeDo() {
                     <h3 className="text-2xl font-bold font-dot text-foreground uppercase mb-4 group-hover:text-green-400 group-data-[active=true]:text-green-400 transition-colors duration-300">
                         Why This Works
                     </h3>
-                    <p className="text-xl md:text-2xl text-gray-300 font-editorial leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300 tracking-wide">
+                    <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed group-hover:text-green-100 group-data-[active=true]:text-green-100 transition-colors duration-300">
                         This framework is built on real-world experience, not theory. Sharath developed and refined these optimization principles while working on 100+ enterprise ad accounts at LinkedIn, where performance was measured in efficiency, scale, and revenue impact — not vanity metrics.
                     </p>
                 </div>

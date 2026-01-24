@@ -22,8 +22,17 @@ export default function WhoWeAre() {
                 </video>
 
                 {/* Content Layer */}
-                <div className="relative z-10">
-                    <h2 className="text-[6vw] font-bold font-dot uppercase leading-none mb-4 text-foreground mix-blend-difference flex flex-col items-start">
+                <div className="relative z-10 pl-16 pr-6 md:px-10">
+                    {/* MOBILE SPINE HEADER (Vertical) */}
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 h-[80vh] w-10 flex flex-col justify-center items-center md:hidden pointer-events-none mix-blend-difference z-20">
+                        <h2 className="text-[12vh] font-bold font-dot uppercase leading-none text-foreground/20 whitespace-nowrap [writing-mode:vertical-rl] rotate-180 flex items-center gap-4">
+                            <span className="text-accent/80">THE INSIDER EDGE</span>
+                            <span>FOR YOUR ADS</span>
+                        </h2>
+                    </div>
+
+                    {/* DESKTOP/TABLET HEADER (Horizontal - Hidden on Mobile) */}
+                    <h2 className="hidden md:flex text-[6vw] font-bold font-dot uppercase leading-none mb-4 text-foreground mix-blend-difference flex-col items-start">
                         <RedactedReveal delay={0.1}>
                             <TextHover text="THE INSIDER EDGE" />
                         </RedactedReveal>
@@ -31,12 +40,13 @@ export default function WhoWeAre() {
                             <TextHover text="FOR YOUR ADS." />
                         </RedactedReveal>
                     </h2>
+
                     <h3 className="text-xl md:text-2xl font-light text-accent uppercase tracking-widest mb-10 mix-blend-difference">
                         Founded by Sharath MB (Ex-LinkedIn Marketing).
                     </h3>
 
                     <div className="flex flex-col md:flex-row gap-10 items-start">
-                        <p className="text-xl md:text-4xl font-editorial italic leading-relaxed max-w-4xl text-foreground/90 mix-blend-difference tracking-wide">
+                        <p className="text-xl md:text-3xl leading-relaxed max-w-4xl text-foreground/90 mix-blend-difference">
                             We don't guess algorithms. We know them. Founded by a former LinkedIn Insider who personally optimized over 100 enterprise accounts. We apply officially trained optimization secrets to squeeze every drop of ROI from your budget. From high-converting creative to forensic tracking, we handle the entire ecosystem.
                         </p>
 
