@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Globe from "@/components/ui/Globe";
 
 // Placeholder for toolbox items
 const TOOLBOX_ITEMS = [
@@ -59,13 +60,8 @@ const LocationCard = () => (
                 <span className="text-xs uppercase tracking-widest text-neutral-400">Available Worldwide</span>
             </div>
         </div>
-        <div className="absolute inset-x-0 bottom-[-20%] h-[120%] z-10 opacity-60 group-hover:opacity-80 transition-opacity duration-700">
-            <Image
-                src="/images/about/wireframe_globe_dark_1769243838697.png"
-                alt="Global Reach"
-                fill
-                className="object-contain object-bottom group-hover:rotate-12 transition-transform duration-[2s] ease-in-out"
-            />
+        <div className="absolute inset-x-0 bottom-[-50%] h-[180%] w-full z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-700 flex justify-center items-start pointer-events-none">
+            <Globe className="translate-y-10" />
         </div>
     </div>
 );
@@ -166,3 +162,4 @@ export default function AboutUs() {
         </section>
     );
 }
+
