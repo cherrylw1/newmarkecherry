@@ -15,11 +15,9 @@ export default function Booking() {
             setShowContent(true);
         }, 600);
 
-        // Redirect (New Tab to prevent losing site)
+        // Redirect
         setTimeout(() => {
-            window.open("https://calendly.com/sharathmb-cherryontops/30min", "_blank");
-            // Optional: Reset state after they leave so if they come back it's reset? 
-            // setIsExpanded(false); // Let's keep it simple first.
+            window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
         }, 2000);
     };
 
