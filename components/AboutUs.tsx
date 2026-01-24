@@ -60,38 +60,80 @@ const TOOLBOX_ITEMS = [
 ];
 
 const StatCard = ({ value, label }: { value: string; label: string }) => (
-    <div className="h-full w-full bg-neutral-900/50 border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:bg-neutral-800/50 transition-colors duration-500 group">
-        <h3 className="text-4xl md:text-5xl font-bold font-dot text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="h-full w-full bg-neutral-900/50 border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:bg-neutral-800/50 transition-colors duration-500 group"
+    >
+        <motion.h3
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-4xl md:text-5xl font-bold font-dot text-white mb-2 group-hover:scale-110 transition-transform duration-300"
+        >
             {value}
-        </h3>
+        </motion.h3>
         <p className="text-sm font-light text-neutral-400 uppercase tracking-wider group-hover:text-white transition-colors">
             {label}
         </p>
-    </div>
+    </motion.div>
 );
 
 const SpotlightCard = ({ title, image, className }: { title: string; image: string; className?: string }) => (
-    <div className={`relative w-full h-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden group ${className}`}>
-        <div className="absolute inset-0 z-0">
+    <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className={`relative w-full h-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden group ${className}`}
+    >
+        <motion.div
+            initial={{ scale: 1.1 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="absolute inset-0 z-0"
+        >
             <Image
                 src={image}
                 alt="Abstract 3D Shape"
                 fill
                 className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
             />
-        </div>
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
-        <div className="relative z-20 h-full flex flex-col justify-end p-6">
+        <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative z-20 h-full flex flex-col justify-end p-6"
+        >
             <h3 className="text-xl md:text-2xl font-bold text-white max-w-[80%] leading-tight group-hover:text-accent transition-colors">
                 {title}
             </h3>
-        </div>
-    </div>
+        </motion.div>
+    </motion.div>
 );
 
 const LocationCard = () => (
-    <div className="relative w-full h-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden group flex flex-col items-center justify-between p-6">
-        <div className="text-center z-20 mt-4">
+    <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative w-full h-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden group flex flex-col items-center justify-between p-6"
+    >
+        <motion.div
+            initial={{ y: -10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center z-20 mt-4"
+        >
             <h3 className="text-xl font-bold text-white mb-1">Based in Bangalore, India</h3>
             <div className="flex items-center justify-center gap-2">
                 <span className="relative flex h-2 w-2">
@@ -100,28 +142,58 @@ const LocationCard = () => (
                 </span>
                 <span className="text-xs uppercase tracking-widest text-neutral-400">Available Worldwide</span>
             </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-[-50%] h-[180%] w-full z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-700 flex justify-center items-start pointer-events-none">
+        </motion.div>
+        <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 0.7 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="absolute inset-x-0 bottom-[-50%] h-[180%] w-full z-10 group-hover:opacity-100 transition-opacity duration-700 flex justify-center items-start pointer-events-none"
+        >
             <Globe className="translate-y-10" />
-        </div>
-    </div>
+        </motion.div>
+    </motion.div>
 );
 
 const FounderCard = () => (
-    <div className="w-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 group">
-        <div className="relative h-[400px] md:h-auto w-full overflow-hidden">
+    <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="w-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 group"
+    >
+        <motion.div
+            initial={{ x: -30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative h-[400px] md:h-auto w-full overflow-hidden"
+        >
             <Image
                 src="/images/about/founder_original.jpg"
                 alt="Sharath MB - Founder"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent">
+            <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent"
+            >
                 <h3 className="text-3xl font-bold text-white">Sharath MB</h3>
                 <p className="text-sm uppercase tracking-widest text-neutral-400">Founder & Creative Director</p>
-            </div>
-        </div>
-        <div className="p-8 md:p-12 flex flex-col justify-center bg-black/40">
+            </motion.div>
+        </motion.div>
+        <motion.div
+            initial={{ x: 30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="p-8 md:p-12 flex flex-col justify-center bg-black/40"
+        >
             <h4 className="text-2xl font-bold text-white mb-6">The Founder</h4>
             <p className="text-neutral-300 font-light leading-relaxed mb-8">
                 Sharath blends creative vision with technical precision. With a focus on high-impact visuals and data-driven strategies, he leads teams to build brand experiences that don't just look good—they convert. He believes aesthetics only matter when they serve a clear purpose.
@@ -132,8 +204,8 @@ const FounderCard = () => (
                     <span className="text-lg">→</span>
                 </button>
             </div>
-        </div>
-    </div>
+        </motion.div>
+    </motion.div>
 );
 
 const Toolbox = () => (
