@@ -22,17 +22,8 @@ export default function WhoWeAre() {
                 </video>
 
                 {/* Content Layer */}
-                <div className="relative z-10 pl-16 pr-6 md:px-10">
-                    {/* MOBILE SPINE HEADER (Vertical) */}
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 h-[80vh] w-10 flex flex-col justify-center items-center md:hidden pointer-events-none mix-blend-difference z-20">
-                        <h2 className="text-[12vh] font-bold font-dot uppercase leading-none text-foreground/20 whitespace-nowrap [writing-mode:vertical-rl] rotate-180 flex items-center gap-4">
-                            <span className="text-accent/80">THE INSIDER EDGE</span>
-                            <span>FOR YOUR ADS</span>
-                        </h2>
-                    </div>
-
-                    {/* DESKTOP/TABLET HEADER (Horizontal - Hidden on Mobile) */}
-                    <h2 className="hidden md:flex text-[6vw] font-bold font-dot uppercase leading-none mb-4 text-foreground mix-blend-difference flex-col items-start">
+                <div className="relative z-10">
+                    <h2 className="text-[6vw] font-bold font-dot uppercase leading-none mb-4 text-foreground mix-blend-difference flex flex-col items-start">
                         <RedactedReveal delay={0.1}>
                             <TextHover text="THE INSIDER EDGE" />
                         </RedactedReveal>
