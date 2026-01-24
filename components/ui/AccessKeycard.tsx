@@ -10,24 +10,23 @@ export default function AccessKeycard() {
     const handleUnlock = () => {
         setIsActivating(true);
 
-        // SEQUENCE TIMELINE
-        // 0s: Start Overlay
-        // 0.5s: "SCANNING ID"
-        // 1.0s: "ITEM 1"
-        // 1.5s: "ITEM 2"
-        // 2.0s: "ITEM 3"
-        // 2.5s: "TRANSFERRING..."
-        // 3.0s: REDIRECT
+        // TIMELINE EXTENDED (2x Duration for Readability)
+        // 0s-1s: SCANNING
+        // 1s-2s: ITEM 1
+        // 2s-3s: ITEM 2
+        // 3s-4s: ITEM 3
+        // 4s-5.5s: TRANSFERRING
+        // 5.5s: REDIRECT
 
-        setTimeout(() => setStep(1), 500);
-        setTimeout(() => setStep(2), 1000);
-        setTimeout(() => setStep(3), 1500);
-        setTimeout(() => setStep(4), 2000);
-        setTimeout(() => setStep(5), 2500);
+        setTimeout(() => setStep(1), 800);  // Scan
+        setTimeout(() => setStep(2), 1800); // Item 1
+        setTimeout(() => setStep(3), 2800); // Item 2
+        setTimeout(() => setStep(4), 3800); // Item 3
+        setTimeout(() => setStep(5), 4800); // Transfer msg
 
         setTimeout(() => {
             window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
-        }, 3000);
+        }, 6500); // Redirect after reading time
     };
 
     return (
