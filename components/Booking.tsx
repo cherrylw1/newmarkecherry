@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LegalTerminal from "@/components/ui/LegalTerminal";
 
 export default function Booking() {
     const [isExpanded, setIsExpanded] = useState(false);
