@@ -74,7 +74,7 @@ const FounderCard = () => (
     <div className="w-full bg-neutral-900/50 border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 group">
         <div className="relative h-[400px] md:h-auto w-full overflow-hidden">
             <Image
-                src="/images/about/founder_filtered_1769243792579.png"
+                src="/images/about/founder_filtered_v2.png"
                 alt="Sharath MB - Founder"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
