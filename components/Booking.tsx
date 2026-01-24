@@ -45,9 +45,8 @@ export default function Booking() {
                 <p className="text-lg md:text-xl text-foreground/80 font-sans font-light leading-relaxed max-w-2xl">
                     Don't just get advice, get the assets. Book now and I'll build you a <span className="text-white font-medium">High-Quality Landing Page + Custom Video Ad</span> for free.
                     <br /><br />
-                    <span className="font-dot text-sm uppercase tracking-wider opacity-70">Status: No strings attached.</span>
-                    <br />
-                    <span className="font-dot text-sm uppercase tracking-wider opacity-70">Next Step: Book your free strategy meeting with Sharath below.</span>
+                    <span className="font-dot text-base md:text-lg uppercase tracking-wider text-white font-bold block mb-2">Status: No strings attached.</span>
+                    <span className="font-dot text-base md:text-lg uppercase tracking-wider text-white font-bold block">Next Step: Book your free strategy meeting with Sharath below.</span>
                 </p>
             </div>
 
