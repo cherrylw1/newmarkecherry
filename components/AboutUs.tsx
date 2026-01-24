@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Globe from "@/components/ui/Globe";
 
+import TextHover from "@/components/ui/TextHover";
+
 // Placeholder for toolbox items
 const TOOLBOX_ITEMS = [
     "Figma",
@@ -113,7 +115,9 @@ export default function AboutUs() {
         <section className="relative w-full bg-black py-20 px-4 md:px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold font-dot text-white uppercase tracking-widest mb-8">[ About Us ]</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold font-dot text-white uppercase tracking-widest mb-8">
+                        <TextHover text="[ About Us ]" />
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
