@@ -2,6 +2,7 @@ import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
 import WhoWeAre from "@/components/WhoWeAre";
 import WhatWeDo from "@/components/WhatWeDo";
+import AboutUs from "@/components/AboutUs";
 import Booking from "@/components/Booking";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <WhoWeAre />
       <WhatWeDo />
+      <AboutUs />
       <Booking />
     </main>
   );
