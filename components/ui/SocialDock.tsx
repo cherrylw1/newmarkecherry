@@ -1,11 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function SocialDock() {
-    // Track which icon is hovered/touched
+    // Desktop Hover State
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+    // Mobile Neural Button State
+    const [isMobileOpen, setIsMobileOpen] = useState(false);
 
     const socials = [
         {
@@ -49,57 +52,102 @@ export default function SocialDock() {
     ];
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-2 pointer-events-none md:pointer-events-auto scale-75 md:scale-100 origin-bottom-right opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500"
-        >
-            {/* Status Indicator */}
-            <div className="flex items-center gap-2 mb-2 px-2 opacity-80 font-mono text-[10px] tracking-widest text-white select-none shadow-black/50 drop-shadow-md">
-                <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                SYSTEM ONLINE
+        <>
+            {/* =========================================================================
+                DESKTOP VERSION: HUD LIST (Hidden on Mobile)
+                ========================================================================= */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                className="hidden md:flex fixed bottom-6 right-6 z-[9999] flex-col items-end gap-2 pointer-events-auto opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500"
+            >
+                {/* Status Indicator */}
+                <div className="flex items-center gap-2 mb-2 px-2 opacity-80 font-mono text-[10px] tracking-widest text-white select-none shadow-black/50 drop-shadow-md">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    SYSTEM ONLINE
+                </div>
+
+                {/* The Dock */}
+                <div className="pointer-events-auto flex flex-col bg-black/60 backdrop-blur-xl border border-white/10 rounded-lg overflow-hidden py-2 shadow-2xl transition-all duration-300 hover:border-white/30 hover:bg-black/90">
+                    {socials.map((item) => (
+                        <a
+                            key={item.id}
+                            href={item.href}
+                            target={item.id === "mail" ? "_self" : "_blank"}
+                            rel="noopener noreferrer"
+                            onMouseEnter={() => setHoveredId(item.id)}
+                            onMouseLeave={() => setHoveredId(null)}
+                            className="group relative flex items-center justify-between gap-6 px-4 py-2 hover:bg-white/5 transition-colors duration-200 cursor-pointer text-gray-300"
+                            style={{
+                                color: hoveredId === item.id ? item.brandColor : undefined
+                            }}
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="font-dot text-xs opacity-70 group-hover:opacity-100 transition-opacity">
+                                    [{item.label}]
+                                </span>
+                            </div>
+                            <div className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 opacity-90 group-hover:opacity-100">
+                                {item.icon}
+                            </div>
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                        </a>
+                    ))}
+                </div>
+            </motion.div>
+
+            {/* =========================================================================
+                MOBILE VERSION: NEURAL BUTTON (Hidden on Desktop)
+                ========================================================================= */}
+            <div className="md:hidden fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-4 pointer-events-auto">
+                <AnimatePresence>
+                    {isMobileOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex flex-col gap-3 mb-2"
+                        >
+                            {socials.map((item) => (
+                                <a
+                                    key={item.id}
+                                    href={item.href}
+                                    target={item.id === "mail" ? "_self" : "_blank"}
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-end gap-3"
+                                >
+                                    <span className="bg-black/80 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur-md">
+                                        {item.label}
+                                    </span>
+                                    <div
+                                        className="w-12 h-12 rounded-full flex items-center justify-center bg-black/80 backdrop-blur-xl border border-white/20 shadow-lg text-white"
+                                        style={{ color: item.brandColor }}
+                                    >
+                                        {item.icon}
+                                    </div>
+                                </a>
+                            ))}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* THE NEURAL TRIGGER */}
+                <button
+                    onClick={() => setIsMobileOpen(!isMobileOpen)}
+                    className="relative w-14 h-14 rounded-full bg-black/50 backdrop-blur-lg border border-white/20 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)] outline-none"
+                >
+                    {/* Pulse Ring */}
+                    <span className="absolute inset-0 rounded-full border border-green-500/50 animate-[ping_3s_linear_infinite] opacity-50"></span>
+
+                    {/* Inner Core */}
+                    <div className={`w-3 h-3 rounded-full transition-all duration-300 ${isMobileOpen ? "bg-red-500 shadow-[0_0_10px_#ef4444]" : "bg-green-500 shadow-[0_0_10px_#22c55e]"}`}></div>
+                </button>
             </div>
-
-            {/* The Dock */}
-            <div className="pointer-events-auto flex flex-col bg-black/60 backdrop-blur-xl border border-white/10 rounded-lg overflow-hidden py-2 shadow-2xl transition-all duration-300 hover:border-white/30 hover:bg-black/90">
-                {socials.map((item) => (
-                    <a
-                        key={item.id}
-                        href={item.href}
-                        target={item.id === "mail" ? "_self" : "_blank"}
-                        rel="noopener noreferrer"
-                        onMouseEnter={() => setHoveredId(item.id)}
-                        onMouseLeave={() => setHoveredId(null)}
-                        onTouchStart={() => setHoveredId(item.id)}
-                        onTouchEnd={() => setHoveredId(null)}
-                        // Base style
-                        className="group relative flex items-center justify-between gap-6 px-4 py-2 hover:bg-white/5 transition-colors duration-200 cursor-pointer text-gray-300"
-                        // Inline style override for GUARANTEED color change
-                        style={{
-                            color: hoveredId === item.id ? item.brandColor : undefined
-                        }}
-                    >
-                        {/* Label (Left) */}
-                        <div className="flex items-center gap-3">
-                            <span className="font-dot text-xs opacity-70 group-hover:opacity-100 transition-opacity">
-                                [{item.label}]
-                            </span>
-                        </div>
-
-                        {/* Icon (Right) */}
-                        <div className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 opacity-90 group-hover:opacity-100">
-                            {item.icon}
-                        </div>
-
-                        {/* Glitch/Scanline effect on hover (optional subtle line) */}
-                        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                    </a>
-                ))}
-            </div>
-        </motion.div>
+        </>
     );
 }
