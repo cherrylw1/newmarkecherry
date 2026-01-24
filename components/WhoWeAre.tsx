@@ -33,7 +33,7 @@ export default function WhoWeAre() {
                     </h2>
 
                     <h3 className="text-xl md:text-2xl font-light text-accent uppercase tracking-widest mb-10 mix-blend-difference">
-                        Founded by Sharath MB (Ex-LinkedIn Marketing).
+                        Founded by Sharath MB.
                     </h3>
 
                     <div className="flex flex-col md:flex-row gap-10 items-start">

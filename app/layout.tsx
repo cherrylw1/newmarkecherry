@@ -27,7 +27,7 @@ const dotMatrix = Codystar({
 export const metadata: Metadata = {
   metadataBase: new URL("https://cherryontops.in"),
   title: "Cherry On Top | Digital Experience Agency",
-  description: "We don't guess algorithms. We know them. The insider edge for your ads, founded by Ex-LinkedIn Marketing expert Sharath MB.",
+  description: "We don't guess algorithms. We know them. The insider edge for your ads, founded by Sharath MB.",
   openGraph: {
     title: "Cherry On Top | Digital Experience Agency",
     description: "The insider edge for your ads. Specialized optimization strategy for 100+ enterprise accounts.",
