@@ -41,6 +41,21 @@ export default function Booking() {
                     </span>
                 </div>
 
+                {/* OPERATOR BADGE (Mobile Only) - Trust Signal */}
+                <div className="md:hidden flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full pr-4 pl-1 py-1 mt-2 mb-2 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                        <img
+                            src="/assets/sharath-profile.jpg"
+                            alt="Sharath MB"
+                            className="w-full h-full object-cover grayscale opacity-90 contrast-125"
+                        />
+                    </div>
+                    <div className="text-left">
+                        <div className="text-[10px] text-white/50 uppercase tracking-widest leading-none mb-0.5">Verified Operator</div>
+                        <div className="text-xs text-white font-bold font-dot tracking-wide leading-none">Sharath MB: No Sales Reps.</div>
+                    </div>
+                </div>
+
                 {/* Body Text */}
                 <p className="text-lg md:text-xl text-foreground/80 font-sans font-light leading-relaxed max-w-2xl">
                     Don't just get advice, get the assets. Book now and I'll build you a <span className="text-white font-medium">High-Quality Landing Page + Custom Video Ad</span> for free.
