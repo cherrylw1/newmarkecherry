@@ -67,9 +67,11 @@ export default function ImageSequence({
         };
 
         const handleResize = () => {
-            // OPTIMIZATION: Cap DPR at 1.5 to save performance on high-res mobile screens
-            // This huge speed boost makes scrolling smooth on phones
-            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+            // OPTIMIZATION: Mobile Turbo Patch
+            // Mobile: Force 1.0x DPR for max speed. Desktop: Cap at 1.5x for quality.
+            const isMobile = window.innerWidth < 768;
+            const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
+
             const rect = canvas.getBoundingClientRect();
 
             const newWidth = rect.width * dpr;
@@ -83,7 +85,7 @@ export default function ImageSequence({
 
                 // Context resets on resize, restore settings
                 context.imageSmoothingEnabled = true;
-                context.imageSmoothingQuality = "high";
+                context.imageSmoothingQuality = isMobile ? "medium" : "high"; // Faster scaling on mobile
 
                 renderFrame();
             }
@@ -93,7 +95,26 @@ export default function ImageSequence({
         resizeObserver.observe(canvas);
 
         // Initial load
+        const isMobileLoad = window.innerWidth < 768;
+
         for (let i = 0; i < frameCount; i++) {
+            // FRAME SKIPPING LOGIC (Mobile Only)
+            // If mobile, recycle every odd frame to save 50% bandwidth/memory
+            if (isMobileLoad && i % 2 !== 0 && i > 0) {
+                // Point to previous image object (Zero memory cost, mostly smooth)
+                // We push a placeholder that will "eventually" be the previous image
+                // But wait, array logic. We can just reference the same Image object if we want.
+                // Actually, simpler: just don't load. renderFrame needs to handle `undefined`?
+                // No, safer to clone reference.
+                // However, we can't clone 'images[i-1]' yet because the loop runs instantly.
+                // We can just create a new Image with the SAME src? No, that triggers request.
+
+                // Better approach for loop:
+                // We actually want images[i] to be images[i-1].
+                images[i] = images[i - 1];
+                continue;
+            }
+
             const img = new Image();
             img.src = getFrameUrl(i);
             img.onload = () => {
@@ -104,6 +125,30 @@ export default function ImageSequence({
                 }
             };
             images.push(img);
+            // Fix index alignment if we skipped pushed? 
+            // images.push puts it at end.
+            // If we skip, we must ensure images[i] is filled.
+        }
+
+        // CORRECTION: The loop above with images.push and images[i] = ... is mixing paradigms.
+        // Let's rewrite the loop properly.
+        images.length = 0; // Clear
+
+        for (let i = 0; i < frameCount; i++) {
+            if (isMobileLoad && i % 2 !== 0 && i > 0) {
+                // Reuse previous reference
+                images.push(images[i - 1]);
+            } else {
+                const img = new Image();
+                img.src = getFrameUrl(i);
+                if (i === 0) {
+                    img.onload = () => {
+                        handleResize();
+                        renderFrame();
+                    };
+                }
+                images.push(img);
+            }
         }
 
         if (!triggerRef?.current) return;
