@@ -6,6 +6,7 @@ import GridBackground from "@/components/ui/GridBackground";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import SocialDock from "@/components/ui/SocialDock";
 import GlitchProgressBar from "@/components/ui/GlitchProgressBar";
+import AccessKeycard from "@/components/ui/AccessKeycard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +67,7 @@ export default function RootLayout({
         <GridBackground />
         <GlitchProgressBar />
         <SocialDock />
+        <AccessKeycard />
         {children}
       </body>
     </html>
