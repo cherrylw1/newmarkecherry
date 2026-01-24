@@ -281,7 +281,7 @@ export default function AboutUs() {
                     </div>
 
                     {/* Row 3: Toolbox - Adjusted Layout for Desktop Gap */}
-                    <div className="md:col-span-4 md:-mt-12">
+                    <div className="md:col-span-4 md:-mt-24">
                         <Toolbox />
                     </div>
                 </div>
