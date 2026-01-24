@@ -20,6 +20,20 @@ export default function Booking() {
     // Legal Terminal State
     const [legalType, setLegalType] = useState<"PRIVACY" | "TERMS" | null>(null);
 
+    const handleClick = () => {
+        setIsExpanded(true);
+
+        // Show text sequence
+        setTimeout(() => {
+            setShowContent(true);
+        }, 600);
+
+        // Redirect
+        setTimeout(() => {
+            window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
+        }, 2000);
+    };
+
     return (
         <section className="relative min-h-screen w-full flex flex-col items-center justify-center bg-transparent px-4 text-center overflow-hidden">
             {/* Legal Terminal Modal */}
