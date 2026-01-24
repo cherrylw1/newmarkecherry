@@ -17,22 +17,14 @@ export default function Booking() {
         setTimeout(() => setIsDenied(false), 500);
     };
 
-    const handleClick = () => {
-        setIsExpanded(true);
-
-        // Show text sequence
-        setTimeout(() => {
-            setShowContent(true);
-        }, 600);
-
-        // Redirect
-        setTimeout(() => {
-            window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
-        }, 2000);
-    };
+    // Legal Terminal State
+    const [legalType, setLegalType] = useState<"PRIVACY" | "TERMS" | null>(null);
 
     return (
         <section className="relative min-h-screen w-full flex flex-col items-center justify-center bg-transparent px-4 text-center overflow-hidden">
+            {/* Legal Terminal Modal */}
+            <LegalTerminal isOpen={legalType} onClose={() => setLegalType(null)} />
+
             {/* Layer 1 (Back): Competitor Intel Lockbox (Interactive) */}
             <motion.div
                 className="absolute inset-0 z-[-1]"
@@ -150,14 +142,14 @@ export default function Booking() {
                     )}
                 </AnimatePresence>
             </div>
-            {/* Legal Footer - CYBER AMBER */}
+            {/* Legal Footer - CYBER AMBER - CENTER STACK FIX */}
             <div className="absolute bottom-4 left-0 w-full text-center z-30 pointer-events-auto">
-                <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-dot tracking-widest text-white/80">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-[10px] md:text-xs font-dot tracking-widest text-white/80 max-w-[60%] md:max-w-none mx-auto">
                     <span>CHERRY ON TOP © 2025 // SYSTEM SECURE</span>
                     <span className="hidden md:inline text-amber-500/20">|</span>
-                    <div className="flex gap-4">
-                        <a href="#" className="hover:text-amber-400 transition-colors duration-300">PRIVACY_PROTOCOL</a>
-                        <a href="#" className="hover:text-amber-400 transition-colors duration-300">TERMS_OF_SERVICE</a>
+                    <div className="flex flex-col md:flex-row gap-2 md:gap-4 mt-2 md:mt-0">
+                        <button onClick={() => setLegalType("PRIVACY")} className="hover:text-amber-400 transition-colors duration-300 uppercase">PRIVACY_PROTOCOL</button>
+                        <button onClick={() => setLegalType("TERMS")} className="hover:text-amber-400 transition-colors duration-300 uppercase">TERMS_OF_SERVICE</button>
                     </div>
                 </div>
             </div>
