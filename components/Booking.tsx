@@ -7,6 +7,15 @@ export default function Booking() {
     const [isExpanded, setIsExpanded] = useState(false);
     const [showContent, setShowContent] = useState(false);
 
+    // Lockbox State
+    const [isDenied, setIsDenied] = useState(false);
+
+    const handleLockboxClick = () => {
+        // Trigger "Access Denied" Shake
+        setIsDenied(true);
+        setTimeout(() => setIsDenied(false), 500);
+    };
+
     const handleClick = () => {
         setIsExpanded(true);
 
@@ -23,10 +32,40 @@ export default function Booking() {
 
     return (
         <section className="relative min-h-screen w-full flex flex-col items-center justify-center bg-transparent px-4 text-center overflow-hidden">
-            {/* Layer 1 (Back): 3D Render Image */}
-            <div className="absolute inset-0 z-[-1] opacity-20">
-                <img src="/assets/bg-book.jpg" alt="The Portal" className="w-full h-full object-cover" />
-            </div>
+            {/* Layer 1 (Back): Competitor Intel Lockbox (Interactive) */}
+            <motion.div
+                className="absolute inset-0 z-[-1]"
+                onClick={handleLockboxClick}
+                animate={isDenied ? { x: [-10, 10, -10, 10, 0] } : {}}
+                transition={{ duration: 0.4 }}
+            >
+                {/* The Forbidden Image */}
+                <img
+                    src="/assets/competitor-intel.png"
+                    alt="Restricted Data"
+                    className="w-full h-full object-cover opacity-30 blur-[2px] transition-all duration-300"
+                    style={{ filter: isDenied ? "grayscale(100%) contrast(150%) brightness(0.5) blur(4px)" : undefined }}
+                />
+
+                {/* Denial Overlay (Flashes Red on Click) */}
+                <motion.div
+                    className="absolute inset-0 bg-red-500/0 flex items-center justify-center pointer-events-none"
+                    animate={isDenied ? { backgroundColor: "rgba(255, 0, 0, 0.2)" } : { backgroundColor: "rgba(0,0,0,0)" }}
+                >
+                    <AnimatePresence>
+                        {isDenied && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1.2 }}
+                                exit={{ opacity: 0 }}
+                                className="border-4 border-red-500 text-red-500 font-black text-4xl uppercase px-6 py-2 rotate-[-15deg] backdrop-blur-sm"
+                            >
+                                ACCESS DENIED
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.div>
+            </motion.div>
 
             {/* Exclusive Offer Text Block */}
             <div className="relative z-10 max-w-3xl mb-12 flex flex-col items-center gap-6 mix-blend-difference">
