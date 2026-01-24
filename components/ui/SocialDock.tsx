@@ -14,7 +14,8 @@ export default function SocialDock() {
                 </svg>
             ),
             href: "mailto:hello@cherryontops.in",
-            color: "group-hover:text-green-500",
+            // Gmail Red
+            color: "group-hover:text-[#EA4335] group-active:text-[#EA4335]",
             hoverText: "SEND TRANSMISSION"
         },
         {
@@ -28,7 +29,8 @@ export default function SocialDock() {
                 </svg>
             ),
             href: "https://linkedin.com",
-            color: "group-hover:text-blue-400",
+            // LinkedIn Blue
+            color: "group-hover:text-[#0A66C2] group-active:text-[#0A66C2]",
             hoverText: "ESTABLISH UPLINK"
         },
         {
@@ -42,7 +44,8 @@ export default function SocialDock() {
                 </svg>
             ),
             href: "https://instagram.com",
-            color: "group-hover:text-red-500",
+            // Instagram Pink
+            color: "group-hover:text-[#E4405F] group-active:text-[#E4405F]",
             hoverText: "VISUAL DATA"
         }
     ];
