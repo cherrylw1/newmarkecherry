@@ -28,9 +28,28 @@ export default function Booking() {
                 <img src="/assets/bg-book.jpg" alt="The Portal" className="w-full h-full object-cover" />
             </div>
 
-            <p className="text-xl md:text-2xl text-foreground/60 mb-8 max-w-xl relative z-10 mix-blend-difference">
-                Sharath has personally optimized 100+ accounts. Book your 1:1 strategy session.
-            </p>
+            {/* Exclusive Offer Text Block */}
+            <div className="relative z-10 max-w-3xl mb-12 flex flex-col items-center gap-6 mix-blend-difference">
+                {/* Headline with Live Pulse */}
+                <div className="group flex items-center gap-3 cursor-default">
+                    <h3 className="text-2xl md:text-4xl font-bold font-dot uppercase tracking-widest text-foreground group-hover:text-accent transition-colors duration-300">
+                        &gt; EXCLUSIVE OFFER: FIRST 50 SPOTS
+                    </h3>
+                    <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                    </span>
+                </div>
+
+                {/* Body Text */}
+                <p className="text-lg md:text-xl text-foreground/80 font-sans font-light leading-relaxed max-w-2xl">
+                    Don't just get advice, get the assets. Book now and I'll build you a <span className="text-white font-medium">High-Quality Landing Page + Custom Video Ad</span> for free.
+                    <br /><br />
+                    <span className="font-dot text-sm uppercase tracking-wider opacity-70">Status: No strings attached.</span>
+                    <br />
+                    <span className="font-dot text-sm uppercase tracking-wider opacity-70">Next Step: Book your free strategy meeting with Sharath below.</span>
+                </p>
+            </div>
 
             {/* Container to prevent layout shift when button becomes fixed overlay */}
             <div className="relative z-10 w-full flex justify-center h-20">
