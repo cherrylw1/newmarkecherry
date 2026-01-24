@@ -40,7 +40,7 @@ export default function Preloader() {
                 <motion.div
                     initial={{ opacity: 1 }}
                     exit={{ y: "-100%", opacity: 1, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } }}
-                    className="fixed inset-0 z-[100] bg-black flex flex-col items-start justify-center px-8 md:px-20 font-dot font-bold tracking-widest text-lg md:text-3xl leading-loose"
+                    className="fixed inset-0 z-[100] bg-black flex flex-col items-start justify-center px-6 md:px-20 font-dot font-bold tracking-wider md:tracking-widest text-sm md:text-3xl leading-relaxed md:leading-loose w-full break-words whitespace-pre-wrap"
                 >
                     {lines.map((line, index) => (
                         <motion.div
