@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function SocialDock() {
+    // Track which icon is hovered/touched
+    const [hoveredId, setHoveredId] = useState<string | null>(null);
+
     const socials = [
         {
             id: "mail",
@@ -14,9 +18,7 @@ export default function SocialDock() {
                 </svg>
             ),
             href: "mailto:hello@cherryontops.in",
-            // Gmail Red - Forced
-            color: "group-hover:!text-[#EA4335] group-active:!text-[#EA4335]",
-            hoverText: "SEND TRANSMISSION"
+            brandColor: "#EA4335", // Gmail Red
         },
         {
             id: "linkedin",
@@ -29,9 +31,7 @@ export default function SocialDock() {
                 </svg>
             ),
             href: "https://linkedin.com",
-            // LinkedIn Blue - Forced
-            color: "group-hover:!text-[#0A66C2] group-active:!text-[#0A66C2]",
-            hoverText: "ESTABLISH UPLINK"
+            brandColor: "#0A66C2", // LinkedIn Blue
         },
         {
             id: "instagram",
@@ -44,9 +44,7 @@ export default function SocialDock() {
                 </svg>
             ),
             href: "https://instagram.com",
-            // Instagram Pink - Forced
-            color: "group-hover:!text-[#E4405F] group-active:!text-[#E4405F]",
-            hoverText: "VISUAL DATA"
+            brandColor: "#E4405F", // Instagram Pink
         }
     ];
 
@@ -74,7 +72,16 @@ export default function SocialDock() {
                         href={item.href}
                         target={item.id === "mail" ? "_self" : "_blank"}
                         rel="noopener noreferrer"
-                        className={`group relative flex items-center justify-between gap-6 px-4 py-2 hover:bg-white/5 transition-colors duration-200 cursor-pointer text-gray-300 ${item.color}`}
+                        onMouseEnter={() => setHoveredId(item.id)}
+                        onMouseLeave={() => setHoveredId(null)}
+                        onTouchStart={() => setHoveredId(item.id)}
+                        onTouchEnd={() => setHoveredId(null)}
+                        // Base style
+                        className="group relative flex items-center justify-between gap-6 px-4 py-2 hover:bg-white/5 transition-colors duration-200 cursor-pointer text-gray-300"
+                        // Inline style override for GUARANTEED color change
+                        style={{
+                            color: hoveredId === item.id ? item.brandColor : undefined
+                        }}
                     >
                         {/* Label (Left) */}
                         <div className="flex items-center gap-3">
