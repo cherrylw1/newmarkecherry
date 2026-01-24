@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Globe from "@/components/ui/Globe";
+import TextHover from "@/components/ui/TextHover";
 
 const TOOLBOX_ITEMS = [
     {
