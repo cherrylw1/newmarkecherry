@@ -11,7 +11,6 @@ export default function SmoothScrolling() {
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      smoothTouch: true, // Enable smooth scroll on touch devices (Mobile Bounce)
       touchMultiplier: 2, // Increase touch sensitivity for "Juicy" feel
     });
 
