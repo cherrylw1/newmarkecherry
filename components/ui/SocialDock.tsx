@@ -33,7 +33,7 @@ export default function SocialDock() {
                     <circle cx="4" cy="4" r="2" />
                 </svg>
             ),
-            href: "https://linkedin.com",
+            href: "https://www.linkedin.com/company/cherryontopp",
             brandColor: "#0A66C2", // LinkedIn Blue
         },
         {
@@ -46,7 +46,7 @@ export default function SocialDock() {
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                 </svg>
             ),
-            href: "https://instagram.com",
+            href: "https://www.instagram.com/cherrryyontops/",
             brandColor: "#E4405F", // Instagram Pink
         }
     ];
