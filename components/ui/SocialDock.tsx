@@ -53,7 +53,7 @@ export default function SocialDock() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-2 pointer-events-none md:pointer-events-auto"
+            className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-2 pointer-events-none md:pointer-events-auto scale-75 md:scale-100 origin-bottom-right"
         >
             {/* Status Indicator */}
             <div className="flex items-center gap-2 mb-2 px-2 opacity-80 font-mono text-[10px] tracking-widest text-white select-none shadow-black/50 drop-shadow-md">
