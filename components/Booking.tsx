@@ -41,9 +41,9 @@ export default function Booking() {
                     </span>
                 </div>
 
-                {/* OPERATOR BADGE (Mobile Only) - Trust Signal */}
-                <div className="md:hidden flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full pr-4 pl-1 py-1 mt-2 mb-2 animate-in fade-in slide-in-from-bottom-2 duration-700">
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                {/* OPERATOR BADGE - Trust Signal (Universal) */}
+                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full pr-4 pl-1 py-1 mt-2 mb-4 md:mt-4 md:mb-6 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                    <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border border-white/20">
                         <img
                             src="/assets/sharath-profile.jpg"
                             alt="Sharath MB"
@@ -51,8 +51,8 @@ export default function Booking() {
                         />
                     </div>
                     <div className="text-left">
-                        <div className="text-[10px] text-white/50 uppercase tracking-widest leading-none mb-0.5">Verified Operator</div>
-                        <div className="text-xs text-white font-bold font-dot tracking-wide leading-none">Sharath MB: No Sales Reps.</div>
+                        <div className="text-[10px] md:text-xs text-white/50 uppercase tracking-widest leading-none mb-0.5">Verified Operator</div>
+                        <div className="text-xs md:text-sm text-white font-bold font-dot tracking-wide leading-none">Sharath MB: No Sales Reps.</div>
                     </div>
                 </div>
 
