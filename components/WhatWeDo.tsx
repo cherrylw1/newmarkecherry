@@ -123,18 +123,10 @@ export default function WhatWeDo() {
                 </video>
             </div>
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto pl-16 pr-6 md:px-6 flex flex-col justify-center min-h-screen">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col justify-center min-h-screen">
 
-                {/* MOBILE SPINE HEADER (Vertical) */}
-                <div className="absolute left-4 top-0 h-full w-10 flex flex-col justify-center items-center md:hidden pointer-events-none mix-blend-difference z-20">
-                    <h2 className="text-[10vh] font-bold font-dot uppercase leading-none text-foreground/20 whitespace-nowrap [writing-mode:vertical-rl] rotate-180 flex items-center gap-4">
-                        <span>THE CHERRY ON TOP</span>
-                        <span className="text-accent/80">PAID GROWTH FRAMEWORK</span>
-                    </h2>
-                </div>
-
-                {/* Main Heading (Desktop Only) */}
-                <div className="hidden md:block mb-10 md:mb-16 text-center">
+                {/* Main Heading */}
+                <div className="mb-10 md:mb-16 text-center">
                     <h2 className="text-2xl md:text-6xl font-bold font-dot text-foreground uppercase tracking-tight mb-4 break-words">
                         <span className="block md:inline"><TextHover text="THE CHERRY ON TOP" /></span>
                         <br className="hidden md:block" />
