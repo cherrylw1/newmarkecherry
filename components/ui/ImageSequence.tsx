@@ -11,6 +11,7 @@ interface ImageSequenceProps {
     frameCount: number;
     className?: string;
     triggerRef?: React.RefObject<HTMLElement | null>;
+    disableOnMobile?: boolean; // New prop to kill execution on mobile
 }
 
 export default function ImageSequence({
@@ -18,10 +19,14 @@ export default function ImageSequence({
     frameCount,
     className,
     triggerRef,
+    disableOnMobile = false,
 }: ImageSequenceProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
+        // PERF: Immediately abort if disabled on mobile
+        if (disableOnMobile && window.innerWidth < 768) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 

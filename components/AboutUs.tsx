@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Globe from "@/components/ui/Globe";
+import dynamic from "next/dynamic";
 import TextHover from "@/components/ui/TextHover";
+
+const Globe = dynamic(() => import("@/components/ui/Globe"), { ssr: false });
 
 const TOOLBOX_ITEMS = [
     {
@@ -101,6 +103,7 @@ const SpotlightCard = ({ title, image, className }: { title: string; image: stri
                 src={image}
                 alt="Abstract 3D Shape"
                 fill
+                sizes="(max-width: 768px) 100vw, 25vw"
                 className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
             />
         </motion.div>
@@ -174,6 +177,7 @@ const FounderCard = () => (
                 src="/images/about/founder_original.jpg"
                 alt="Sharath MB - Founder"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover hover:scale-105 transition-transform duration-700"
             />
             <motion.div
