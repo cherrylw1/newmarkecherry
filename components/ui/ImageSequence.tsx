@@ -11,7 +11,6 @@ interface ImageSequenceProps {
     frameCount: number;
     className?: string;
     triggerRef?: React.RefObject<HTMLElement | null>;
-    disableOnMobile?: boolean; // New prop to kill execution on mobile
 }
 
 export default function ImageSequence({
@@ -19,19 +18,13 @@ export default function ImageSequence({
     frameCount,
     className,
     triggerRef,
-    disableOnMobile = false,
 }: ImageSequenceProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
-        // PERF: Immediately abort if disabled on mobile
-        if (disableOnMobile && window.innerWidth < 768) return;
-
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        // Optimize context: alpha false if possible (but we use opacity in parent usually)
-        // We keep default for flexibility but ensure high quality.
         const context = canvas.getContext("2d");
         if (!context) return;
 
@@ -52,10 +45,8 @@ export default function ImageSequence({
             const img = images[Math.round(frame.index)];
             if (!img || !img.complete) return;
 
-            // Safety check
             if (canvasWidth === 0 || canvasHeight === 0) return;
 
-            // Calculate aspect ratio (object-cover logic)
             const hRatio = canvasWidth / img.width;
             const vRatio = canvasHeight / img.height;
             const ratio = Math.max(hRatio, vRatio);
@@ -72,10 +63,7 @@ export default function ImageSequence({
         };
 
         const handleResize = () => {
-            // OPTIMIZATION: Mobile Turbo Patch
-            // Mobile: Force 1.0x DPR for max speed. Desktop: Cap at 1.5x for quality.
-            const isMobile = window.innerWidth < 768;
-            const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
             const rect = canvas.getBoundingClientRect();
 
@@ -88,9 +76,8 @@ export default function ImageSequence({
                 canvas.width = canvasWidth;
                 canvas.height = canvasHeight;
 
-                // Context resets on resize, restore settings
                 context.imageSmoothingEnabled = true;
-                context.imageSmoothingQuality = isMobile ? "medium" : "high"; // Faster scaling on mobile
+                context.imageSmoothingQuality = "high";
 
                 renderFrame();
             }
@@ -99,61 +86,17 @@ export default function ImageSequence({
         const resizeObserver = new ResizeObserver(() => handleResize());
         resizeObserver.observe(canvas);
 
-        // Initial load
-        const isMobileLoad = window.innerWidth < 768;
-
+        // Load all frames
         for (let i = 0; i < frameCount; i++) {
-            // FRAME SKIPPING LOGIC (Mobile Only)
-            // If mobile, recycle every odd frame to save 50% bandwidth/memory
-            if (isMobileLoad && i % 2 !== 0 && i > 0) {
-                // Point to previous image object (Zero memory cost, mostly smooth)
-                // We push a placeholder that will "eventually" be the previous image
-                // But wait, array logic. We can just reference the same Image object if we want.
-                // Actually, simpler: just don't load. renderFrame needs to handle `undefined`?
-                // No, safer to clone reference.
-                // However, we can't clone 'images[i-1]' yet because the loop runs instantly.
-                // We can just create a new Image with the SAME src? No, that triggers request.
-
-                // Better approach for loop:
-                // We actually want images[i] to be images[i-1].
-                images[i] = images[i - 1];
-                continue;
-            }
-
             const img = new Image();
             img.src = getFrameUrl(i);
-            img.onload = () => {
-                // If first frame, render immediately to avoid flash
-                if (i === 0) {
+            if (i === 0) {
+                img.onload = () => {
                     handleResize();
                     renderFrame();
-                }
-            };
-            images.push(img);
-            // Fix index alignment if we skipped pushed? 
-            // images.push puts it at end.
-            // If we skip, we must ensure images[i] is filled.
-        }
-
-        // CORRECTION: The loop above with images.push and images[i] = ... is mixing paradigms.
-        // Let's rewrite the loop properly.
-        images.length = 0; // Clear
-
-        for (let i = 0; i < frameCount; i++) {
-            if (isMobileLoad && i % 2 !== 0 && i > 0) {
-                // Reuse previous reference
-                images.push(images[i - 1]);
-            } else {
-                const img = new Image();
-                img.src = getFrameUrl(i);
-                if (i === 0) {
-                    img.onload = () => {
-                        handleResize();
-                        renderFrame();
-                    };
-                }
-                images.push(img);
+                };
             }
+            images.push(img);
         }
 
         if (!triggerRef?.current) return;
