@@ -30,7 +30,7 @@ export default function Booking() {
 
         // Redirect
         setTimeout(() => {
-            window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
+            window.location.href = "https://calendly.com/founder-cherryontops/30min";
         }, 2000);
     };
 

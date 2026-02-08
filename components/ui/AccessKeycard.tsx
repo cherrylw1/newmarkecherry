@@ -25,7 +25,7 @@ export default function AccessKeycard() {
         setTimeout(() => setStep(5), 4800); // Transfer msg
 
         setTimeout(() => {
-            window.location.href = "https://calendly.com/sharathmb-cherryontops/30min";
+            window.location.href = "https://calendly.com/founder-cherryontops/30min";
         }, 6500); // Redirect after reading time
     };
 
