@@ -89,12 +89,16 @@ export default function Booking() {
 
                 {/* OPERATOR BADGE - Trust Signal (Universal) */}
                 <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full pr-4 pl-1 py-1 mt-2 mb-4 md:mt-4 md:mb-6 animate-in fade-in slide-in-from-bottom-2 duration-700">
-                    <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border border-white/20">
-                        <img
-                            src="/assets/sharath-profile.jpg"
-                            alt="Sharath MB"
-                            className="w-full h-full object-cover grayscale opacity-90 contrast-125"
-                        />
+                    <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border border-white/20 bg-white/10 flex items-center justify-center">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            className="w-5 h-5 md:w-6 md:h-6 text-white/70"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
                     </div>
                     <div className="text-left">
                         <div className="text-[10px] md:text-xs text-white/50 uppercase tracking-widest leading-none mb-0.5">Verified Operator</div>
