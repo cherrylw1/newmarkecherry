@@ -7,6 +7,7 @@ import SmoothScrolling from "@/components/SmoothScrolling";
 import SocialDock from "@/components/ui/SocialDock";
 import GlitchProgressBar from "@/components/ui/GlitchProgressBar";
 import AccessKeycard from "@/components/ui/AccessKeycard";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -92,6 +93,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <SocialDock />
         <AccessKeycard />
         {children}
+        <Script id="churnaut-config" strategy="afterInteractive">
+          {`window.SR_CLIENT_ID = 'a73e7847-4c84-4ff0-b78b-0a7295642a78';`}
+        </Script>
+        <Script src="https://cdn.churnaut.com/snippet.js" strategy="afterInteractive" />
       </body>
     </html>
   );
